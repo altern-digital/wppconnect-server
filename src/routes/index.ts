@@ -933,7 +933,11 @@ routes.post('/api/:session/chatwoot', DeviceController.chatWoot);
 
 // Api Doc
 routes.use('/api-docs', swaggerUi.serve);
-routes.get('/api-docs', swaggerUi.setup(swaggerDocument));
+
+routes.get('/api-docs', swaggerUi.setup(swaggerDocument, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: "WPPConnect Server API Documentation"
+}));
 
 //k8s
 routes.get('/healthz', HealthCheck.healthz);
